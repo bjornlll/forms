@@ -565,7 +565,12 @@ ReactiveForms = (function () {
             return component.resetForm(hard);
           }
         };
-        return self.data.action.call(component.validatedValues, formElements, callbacks, component.changedValues);
+        return self.data.action({
+          validated: component.validatedValues,
+          elements: formElements,
+          callbacks: callbacks,
+          changed: component.changedValues
+        });
       };
 
       // Add component to custom namespace (Issue #21)
